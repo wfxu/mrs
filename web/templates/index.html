@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>电影推荐系统</title>
+	<meta charset = "utf-8">
+	<!-- 使用CSS样式来控制div布局 -->
+	<style type="text/css">
+		/*定义全局的div布局*/
+		html,body{
+			height:100%;
+		}
+		/*定义头部布局，前面的div可以不用写，#号前面默认有个id，凡事定义了id的标签，都可以用#号来表示*/
+		#heading{
+			width: 100%;
+			height: 10%;
+			background-color: #BB80F7;
+		}
+		#content_left{
+			width: 15%;
+			height: 80%;
+			background-color: #C5E9F3;
+			/*定义浮动，不定义的话，界面会乱*/
+			float: left;
+		}
+		#content_body{
+			width: 70%;
+			height: 80%;
+			background-color: #F7575d;
+			float:left
+		}
+		#content_right{
+			width: 15%;
+			height: 80%;
+			background-color: #C5E9F3;
+			/*定义浮动，不定义的话，界面会乱*/
+			float: left;
+		}
+		#floor{
+			/*删除浮动，不然会被其他的浮动给遮住*/
+			clear: both;
+			height: 10%;
+			background-color: #8080FF
+		}
+		*{margin: 0;padding: 0}
+		a{text-decoration: none;color: black;}
+		ul{list-style: none;}
+		./*heading{width: 1200px;margin: 50px auto;font:"microsoft yahei";}*/
+		./*heading:after{content:"";clear: both;height: 0;display: block;}*/
+		.nav_ul{margin:0 20% 0 20%;font:"microsoft yahei";}
+		.nav_ul li{float: left;padding:5px 10px;position: relative;}
+		.nav_ul li .line{position: absolute;width: 0;left: 50%;bottom:-5px;height: 2px;display: block;background: gold;transition: 600ms ease-in-out;}
+		.nav_ul li:hover .line{width: 100%;left: 0;transition: 600ms ease-in-out;}
+		.nav_ul li a{transition:600ms ease-in-out;}
+		.nav_ul li a:hover{color: gold;transition:600ms ease-in-out;}
+	</style>
+</head>
+<body>
+	<!-- 在这里控制全局的页面，定义div的id是"global" -->
+	<div id="heading">
+		<ul class="nav_ul">
+			<li>
+				<a href="javascript:void(0)">首页</a>
+				<span class="line"></span>
+			</li>
+			<li>
+				<a href="javascript:void(0)">暂未开放</a>
+				<span class="line"></span>
+			</li>
+			<li>
+				<a href="javascript:void(0)">用户</a>
+				<span class="line"></span>
+			</li>
+		</ul>
+	</div>
+	<div id="content_left">我是正文部分，我想去左边的菜单呆着</div>
+	<div id="content_body">我是正文部分</div>
+	<div id="content_right">我是正文部分，我想去左边的菜单呆着</div>
+	<div id="floor">我在最下面，抢不到沙发，坐个地板可以吧</div>
+</body>
+</html>
