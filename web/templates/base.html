@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>电影推荐系统</title>
+	<meta charset = "utf-8">
+	<!-- 使用CSS样式来控制div布局 -->
+	<style type="text/css">
+		/*定义全局的div布局*/
+		html,body{
+			height:100%;
+		}
+		*{margin: 0;padding: 0}
+		/*定义头部布局，前面的div可以不用写，#号前面默认有个id，凡事定义了id的标签，都可以用#号来表示*/
+		#heading{
+			width: 100%;
+			height: 10%;
+			/*background-color: #BB80F7;*/
+		}
+		#content_left{
+			width: 15%;
+			height: 80%;
+			/*background-color: #C5E9F3;*/
+			/*定义浮动，不定义的话，界面会乱*/
+			float: left;
+		}
+		#content_body{
+			width: 70%;
+			height: 80%;
+			/*background-color: #F7575d;*/
+			float:left
+		}
+		#content_right{
+			width: 15%;
+			height: 80%;
+			/*background-color: #C5E9F3;*/
+			/*定义浮动，不定义的话，界面会乱*/
+			float: left;
+		}
+		#floor{
+			/*删除浮动，不然会被其他的浮动给遮住*/
+			clear: both;
+			height: 10%;
+			background-color: #212224;
+			text-align: center; color: #999; line-height: 25px;
+		}
+		a{text-decoration: none;color: black;}
+		ul{list-style: none;}
+		./*heading{width: 1200px;margin: 50px auto;font:"microsoft yahei";}*/
+		./*heading:after{content:"";clear: both;height: 0;display: block;}*/
+		.nav_ul{font:"mic;rosoft yahei";}
+		.nav_ul_span{float: left;width:10%;}
+		.nav_ul li{float: left;padding:15px 30px;position: relative;}
+		.nav_ul li .line{position: absolute;width: 0;left: 50%;bottom:-5px;height: 2px;display: block;background: gold;transition: 600ms ease-in-out;}
+		.nav_ul li:hover .line{width: 100%;left: 0;transition: 600ms ease-in-out;}
+		.nav_ul li a{transition:600ms ease-in-out;font-size:xx-large;}
+		.nav_ul li a:hover{color: gold;transition:600ms ease-in-out;}
+		#content_body table{width:100%;height:100%float:left;}
+		#content_body table tr{width:25%;height:25%;}
+		td{padding:10px 20px;text-align: center; }
+		td a img{width:170px;height:200px}
+	</style>
+</head>
+<body>
+	<!-- 在这里控制全局的页面，定义div的id是"global" -->
+	<div id="heading">
+		<ul class="nav_ul">
+			<li class="nav_ul_span"></li>
+			<li>
+				<a href="/">热门电影</a>
+				<span class="line"></span>
+			</li>
+			<li>
+				<a href="/movie/">推荐电影</a>
+				<span class="line"></span>
+			</li>
+			<li>
+				<a href="/user/">用户</a>
+				<span class="line"></span>
+			</li>
+			<li class="nav_ul_span"></li>
+		</ul>
+	</div>
+	<div id="content_left"></div>
+	<div id="content_body">
+	{% block body %}
+	{% endblock %}
+	</div>
+	<div id="content_right"></div>
+	<div id="floor">
+		<p style="padding-top:10px"> Copyright©2020-2025 飞羽&nbsp;&nbsp;
+			<a href="javascript:void(0)">|
+			<img style="vertical-align:middle" src="">
+			</a>
+		</p>
+		<p>个人链接：
+			<a href="https://github.com/wfxu" target="_blank" style="color: #999">github地址</a> |
+			<a href="mrs/" target="_blank" style="color: #999">项目地址</a> |
+			<a href="https://blog.csdn.net/qq_35318838" target="_blank" style="color: #999">个人博客</a> |
+		</p>
+	</div>
+</body>
+</html>

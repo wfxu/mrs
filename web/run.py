@@ -11,12 +11,12 @@ def index():
 
 @app.route('/movie/', methods=['GET', 'POST'])
 def movie():
-    pass
+    return render_template('movie.html')
 
 
 @app.route('/user/', methods=['GET', 'POST'])
 def user():
-    pass
+    return render_template('user.html')
 
 
 if __name__ == '__main__':
