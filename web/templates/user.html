@@ -1,4 +1,63 @@
 {% extends "base.html" %}
 {% block body %}
-    <p> 用户 {{user}} 您好！ <a href="/logout/">注销账户</a></p>
+<div class="user">
+    <p style="width:100%;margin:10px 0"> 用户 {{user}} 您好！
+        <a href="/logout/" style="color:green;right:20%;position: absolute;font-size:25px">注销账户</a>
+    </p>
+    <p>您评价过的电影</p>
+	<table>
+		<tr>
+			<td>
+				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
+				<br>
+				<a href="javascript:void(0)">大护法</a>
+                <p>评分：5</p>
+			</td>
+			<td>
+				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
+				<br>
+				<a href="javascript:void(0)">大护法</a>
+                <p>评分：5</p>
+			</td>
+			<td>
+				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
+				<br>
+				<a href="javascript:void(0)">大护法</a>
+                <p>评分：5</p>
+			</td>
+			<td>
+				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
+				<br>
+				<a href="javascript:void(0)">大护法</a>
+                <p>评分：5</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
+				<br>
+				<a href="javascript:void(0)">大护法</a>
+                <p>评分：5</p>
+			</td>
+			<td>
+				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
+				<br>
+				<a href="javascript:void(0)">大护法</a>
+                <p>评分：5</p>
+			</td>
+			<td>
+				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
+				<br>
+				<a href="javascript:void(0)">大护法</a>
+                <p>评分：5</p>
+			</td>
+			<td>
+				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
+				<br>
+				<a href="javascript:void(0)">大护法</a>
+                <p>评分：5</p>
+			</td>
+		</tr>
+	</table>
+</div>
 {% endblock %}

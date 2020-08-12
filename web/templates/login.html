@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block body %}
-<form action="" method="post" style="text-align: center;">
+<form action="" method="post" class="login_form">
     <p style="color:red">{{prompt}}</p>
-    <p><input type=text name=user>
-    <p><input type=submit value=Login>
+    <p><label>用户名：<input type=text name=user></label></p>
+    <input type=submit value= 登录 style="width:100px;height:30px">
 </form>
 {% endblock %}

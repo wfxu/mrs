@@ -21,7 +21,8 @@ def movie():
 def user():
 	if 'user' in session:
 		return render_template('user.html', user=session['user'])
-	return redirect(url_for('login'))
+	else:
+		return redirect(url_for('login'))
 
 
 @app.route('/login/', methods=['GET', 'POST'])
@@ -32,11 +33,13 @@ def login():
 		db = connectDB().cursor()
 		result = db.execute("select 1 from users where name=?", (user,))
 		r = result.fetchall()
+		db.close()
 		if len(r) == 0:
 			return render_template('login.html', prompt="用户不存在，请重新登录！")
 		else:
 			return redirect(url_for('user'))
-	return render_template('login.html')
+	else:
+		return render_template('login.html', prompt="用户未登录，请登录！")
 
 
 @app.route('/logout/')
@@ -50,4 +53,4 @@ def connectDB():
 
 
 if __name__ == '__main__':
- 	app.run(host='127.0.0.1', port=80, debug=True)
+	app.run(host='127.0.0.1', port=80, debug=True)
