@@ -1,52 +1,24 @@
 {% extends "base.html" %}
 {% block body %}
-	<p>排行榜1</p>
+	<p>很多人评分为满分的电影</p>
 	<table>
 		<tr>
+			{% for key, value in movies1.items() %}
 			<td>
-				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
+				<a href="/static/image/{{key}}.jpg"><img src="/static/image/{{key}}.jpg"></a>
 				<br>
-				<a href="javascript:void(0)">大护法</a>
+				<a href="javascript:void(0)">{{value}}</a>
 			</td>
-			<td>
-				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
-				<br>
-				<a href="javascript:void(0)">大护法</a>
-			</td>
-			<td>
-				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
-				<br>
-				<a href="javascript:void(0)">大护法</a>
-			</td>
-			<td>
-				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
-				<br>
-				<a href="javascript:void(0)">大护法</a>
-			</td>
+			{% endfor %}
 		</tr>
-	</table>
-	<p>排行榜2</p>
-	<table>
 		<tr>
+			{% for key, value in movies2.items() %}
 			<td>
-				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
+				<a href="/static/image/{{key}}.jpg"><img src="/static/image/{{key}}.jpg"></a>
 				<br>
-				<a href="javascript:void(0)">大护法</a>
+				<a href="javascript:void(0)">{{value}}</a>
 			</td>
-			<td>
-				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
-				<br>
-				<a href="javascript:void(0)">大护法</a>
-			</td>
-			<td>
-				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
-				<br>
-				<a href="javascript:void(0)">大护法</a>
-			</td>
-			<td>
-				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
-				<br>
-				<a href="javascript:void(0)">大护法</a>
+			{% endfor %}
 			</td>
 		</tr>
 	</table>
