@@ -23,7 +23,7 @@ def now():
 
 def loadData():
     """
-    0-999     用户id
+    1-943     用户id
     1000-1019 用户年龄
     1020-1021 用户性别
     1030-1050 用户职业
@@ -155,9 +155,14 @@ if __name__ == '__main__':
     test_data = data[80000:].copy()
     optimization(data, iters=20)
     features_recall = getUFR(data)
-    user_recall = getUR(features_recall)
-    df_user_recall = pd.DataFrame({'user_id':list(user_recall.keys()),
-                                   'recall':list(user_recall.values())})
-    df_user_recall['recall'] = df_user_recall.recall.map(
+    df_features_recall = pd.DataFrame({'features':list(features_recall.keys()),
+                                       'recall':list(features_recall.values())})
+    df_features_recall['recall'] = df_features_recall.recall.map(
             lambda x: ','.join([str(r) for r in x]))
-    df_user_recall.to_sql('user_recall', ENGINE, index=False, if_exists='replace')
+    df_features_recall.to_sql('features_recall', ENGINE, index=False, if_exists='replace')
+    user_recall = getUR(features_recall)
+#    df_user_recall = pd.DataFrame({'user_id':list(user_recall.keys()),
+#                                   'recall':list(user_recall.values())})
+#    df_user_recall['recall'] = df_user_recall.recall.map(
+#            lambda x: ','.join([str(r) for r in x]))
+#    df_user_recall.to_sql('user_recall', ENGINE, index=False, if_exists='replace')

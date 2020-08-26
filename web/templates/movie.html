@@ -1,53 +1,27 @@
 {% extends "base.html" %}
 {% block body %}
+	<p>根据年龄推荐</p>
+	<table>
+		<tr>
+			{% for key, value in movies_age.items() %}
+			<td class='list'>
+				<a href="/movie/{{key}}"><img src="/static/image/{{key}}.jpg"></a>
+				<br>
+				<a href="/movie/{{key}}">{{value}}</a>
+			</td>
+			{% endfor %}
+		</tr>
+	</table>
 	<p>根据性别推荐</p>
 	<table>
 		<tr>
-			<td>
-				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
+			{% for key, value in movies_gender.items() %}
+			<td class='list'>
+				<a href="/movie/{{key}}"><img src="/static/image/{{key}}.jpg"></a>
 				<br>
-				<a href="javascript:void(0)">大护法</a>
+				<a href="/movie/{{key}}">{{value}}</a>
 			</td>
-			<td>
-				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
-				<br>
-				<a href="javascript:void(0)">大护法</a>
-			</td>
-			<td>
-				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
-				<br>
-				<a href="javascript:void(0)">大护法</a>
-			</td>
-			<td>
-				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
-				<br>
-				<a href="javascript:void(0)">大护法</a>
-			</td>
-		</tr>
-	</table>
-	<p>根据职业推荐</p>
-	<table>
-		<tr>
-			<td>
-				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
-				<br>
-				<a href="javascript:void(0)">大护法</a>
-			</td>
-			<td>
-				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
-				<br>
-				<a href="javascript:void(0)">大护法</a>
-			</td>
-			<td>
-				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
-				<br>
-				<a href="javascript:void(0)">大护法</a>
-			</td>
-			<td>
-				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
-				<br>
-				<a href="javascript:void(0)">大护法</a>
-			</td>
+			{% endfor %}
 		</tr>
 	</table>
 {% endblock %}

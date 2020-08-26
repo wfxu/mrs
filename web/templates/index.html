@@ -4,19 +4,19 @@
 	<table>
 		<tr>
 			{% for key, value in movies1.items() %}
-			<td>
-				<a href="/static/image/{{key}}.jpg"><img src="/static/image/{{key}}.jpg"></a>
+			<td class='list'>
+				<a href="/movie/{{key}}"><img src="/static/image/{{key}}.jpg"></a>
 				<br>
-				<a href="javascript:void(0)">{{value}}</a>
+				<a href="/movie/{{key}}">{{value}}</a>
 			</td>
 			{% endfor %}
 		</tr>
 		<tr>
 			{% for key, value in movies2.items() %}
-			<td>
+			<td class='list'>
 				<a href="/static/image/{{key}}.jpg"><img src="/static/image/{{key}}.jpg"></a>
 				<br>
-				<a href="javascript:void(0)">{{value}}</a>
+				<a href="/movie/{{key}}">{{value}}</a>
 			</td>
 			{% endfor %}
 			</td>

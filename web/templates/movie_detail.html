@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block body %}
+	<table>
+		<tr>
+			<td></td>
+			<td class='class'>
+				<a href="/movie/{{key}}"><img src="/static/image/{{detail[0]}}.jpg"></a>
+			</td>
+			<td>
+			<p style="text-align: left;font-size:x-large">{{detail[1]}}</p>
+			</br></br></br>
+			<p style="text-align: left;">上映时间：{{detail[2]}}</p>
+			<p style="text-align: left;">分类：&emsp;&emsp;{{detail[3]}}</p>
+			<p style="text-align: left;">观看人数：{{detail[4]}}</p>
+			<p style="text-align: left;">平均评分：{{detail[5]}}</p>
+			<p style="text-align: left;">最高评分：{{detail[6]}}</p>
+			<p style="text-align: left;">最低评分：{{detail[7]}}</p>
+			</td>
+		</tr>
+	</table>
+	<p> 推荐电影 </p>
+	<table>
+		<tr>
+			{% for key, value in movies.items() %}
+			<td class='other'>
+				<a href="/movie/{{key}}"><img src="/static/image/{{key}}.jpg"></a>
+				<br>
+				<a href="javascript:void(0)">{{value}}</a>
+			</td>
+			{% endfor %}
+			</td>
+		</tr>
+	</table>
+{% endblock %}
