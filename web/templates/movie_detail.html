@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block body %}
+	</br>
 	<table>
 		<tr>
 			<td></td>
@@ -7,7 +8,7 @@
 				<a href="/movie/{{key}}"><img src="/static/image/{{detail[0]}}.jpg"></a>
 			</td>
 			<td>
-			<p style="text-align: left;font-size:x-large">{{detail[1]}}</p>
+			<p style="text-align: left;font-size:x-large"><strong>{{detail[1]}}</strong></p>
 			</br></br></br>
 			<p style="text-align: left;">上映时间：{{detail[2]}}</p>
 			<p style="text-align: left;">分类：&emsp;&emsp;{{detail[3]}}</p>
@@ -18,14 +19,15 @@
 			</td>
 		</tr>
 	</table>
-	<p> 推荐电影 </p>
+	</br>
+	<p> 喜欢看这个电影的人还喜欢看 </p>
 	<table>
 		<tr>
 			{% for key, value in movies.items() %}
 			<td class='other'>
 				<a href="/movie/{{key}}"><img src="/static/image/{{key}}.jpg"></a>
 				<br>
-				<a href="javascript:void(0)">{{value}}</a>
+				<a href="/movie/{{key}}">{{value}}</a>
 			</td>
 			{% endfor %}
 			</td>

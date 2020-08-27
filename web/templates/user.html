@@ -1,61 +1,50 @@
 {% extends "base.html" %}
 {% block body %}
 <div class="user">
-    <p style="width:100%;margin:10px 0"> 用户 {{user}} 您好！
+    <p style="width:100%;margin:10px 0;color:red;font-size:25px"> 用户 {{users['user']}} 您好！
         <a href="/logout/" style="color:green;right:20%;position: absolute;font-size:25px">注销账户</a>
     </p>
-    <p>您评价过的电影</p>
-	<table>
+	</br>
+    <table>
 		<tr>
+			<td></td>
 			<td>
-				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
-				<br>
-				<a href="javascript:void(0)">大护法</a>
-                <p>评分：5</p>
+				<a href="javascript:void(0)"><img src="/static/example.jpg" style="width=200px;height=210px;"></a>
 			</td>
 			<td>
-				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
-				<br>
-				<a href="javascript:void(0)">大护法</a>
-                <p>评分：5</p>
-			</td>
-			<td>
-				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
-				<br>
-				<a href="javascript:void(0)">大护法</a>
-                <p>评分：5</p>
-			</td>
-			<td>
-				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
-				<br>
-				<a href="javascript:void(0)">大护法</a>
-                <p>评分：5</p>
+			<p style="text-align: left;font-size:x-large"><strong>用户ID：</strong>{{users['user']}}</p>
+			</br>
+			<p style="text-align: left;">
+			<strong>年龄：</strong>{{users['age']}} &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<strong>性别：</strong>&emsp;&emsp;{{users['gender']}}
+			</p>
+			<p style="text-align: left">
+			<strong>职业：</strong>{{users['occupation']}}&emsp;&emsp;&emsp;
+			<strong>邮政编码：</strong>{{users['zip_code']}}
+			</p>
+			</br>
+			<p style="text-align: left;"><strong>喜欢的电影类型：</strong>{{users['love_label']}}</p>
+			<p style="text-align: left;">迄今为止您一共观看过 <strong>{{users['cnt']}}</strong> 部电影</p>
+			</br>
+			<p style="text-align: left;"><strong>评价最高的电影：</strong>
+			{% for key, value in love_movies.items() %}
+			<a href="/movie/{{key}}">{{value}}；</a>
+			{% endfor %}
+			</p>
 			</td>
 		</tr>
+	</table>
+	</br>
+	<p> 为您推荐的电影 </p>
+	<table>
 		<tr>
-			<td>
-				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
+			{% for key, value in movies.items() %}
+			<td class='other'>
+				<a href="/movie/{{key}}"><img src="/static/image/{{key}}.jpg"></a>
 				<br>
-				<a href="javascript:void(0)">大护法</a>
-                <p>评分：5</p>
+				<a href="/movie/{{key}}">{{value}}</a>
 			</td>
-			<td>
-				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
-				<br>
-				<a href="javascript:void(0)">大护法</a>
-                <p>评分：5</p>
-			</td>
-			<td>
-				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
-				<br>
-				<a href="javascript:void(0)">大护法</a>
-                <p>评分：5</p>
-			</td>
-			<td>
-				<a href="/static/image/example.jpg"><img src="/static/image/example.jpg"></a>
-				<br>
-				<a href="javascript:void(0)">大护法</a>
-                <p>评分：5</p>
+			{% endfor %}
 			</td>
 		</tr>
 	</table>
