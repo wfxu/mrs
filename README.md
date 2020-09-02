@@ -5,28 +5,21 @@ date: '2018-08-28'
 title: 电影推荐系统说明文档
 ---
 
-\maketitle
-\pagenumbering{gobble}
-\newpage
-\pagenumbering{arabic}
+
 概览
 ====
 
 系统架构
 --------
 
-![系统架构](image/系统架构.png){width="\linewidth"}
 
 对movielens数据进行FM模型训练，使用梯度下降优化算法，损失函数为RMSE，训练后的结果保存至数据库中。用户访问页面时，从数据库中获取FM模型和规则的多路召回结果，然后再排序取TOP10推荐并展示给用户。
 
 项目结构
 --------
 
-![项目文档结构](image/项目结构.png){width="\linewidth"}
-
 项目文档主要包含了三个部分：模型、数据和网页文件夹。**模型文件夹**中包含了模型训练的脚本和对样本数据进行统计的脚本。**数据文件夹**包含了sqlite3的安装文件（sqlite3.\*)、数据库文件（wfxu.db）、爬虫文件夹（crawler）、数据处理文件夹（source\_data)，其中爬虫文件夹中包含了爬虫脚本和爬虫获取的电影展示图片的网页链接，数据处理文件夹包含了movielens原始数据和数据处理脚本。**网页文件夹**主要包含了Flask框架的前端静态文件和后端脚本，其中static主要保存了爬虫获取的电影展示图片，templates中全都是前端页面，**run.py为服务启动脚本，运行该脚本即可启动网页服务，输入127.0.0.1:80即可访问电影推荐系统**。
 
-\newpage
 成果展示
 ========
 
@@ -37,54 +30,26 @@ title: 电影推荐系统说明文档
 
 ### 采集和处理的数据
 
-\centering
-![u.data](image/data.png){width="\linewidth"}
 
-![u.user](image/user.png){width="\linewidth"}
-
-![u.item](image/item.png){width="\linewidth"}
-
-\centering
-![tb\_data](image/tb_data.png){width="\linewidth"}
-
-![tb\_user](image/tb_user.png){width="\linewidth"}
-
-![tb\_item](image/tb_item.png){width="\linewidth"}
 
 原始数据都是文件形式，每次读取都需要处理后才能使用，为方便使用所以处理后统一保存至数据库，这样也可以在数据库中进行一些特征的统计和观察。
 
-![爬取的电影展示图片](image/movie_image.png){width="\linewidth"}
 
 为了推荐系统页面的展示，所以从imdb获取了电影的展示图片，并且图片的名称与数据中的movie\_id是一一对应的，这样在页面展示的时候就可以直接使用movie\_id调用。
 
 ### 模型训练后的召回数据
 
-\centering
-![用户特征召回数据](image/features_recall.png){width="\linewidth"}
-
-![用户召回数据](image/user_recall.png){width="\linewidth"}
 
 使用FM模型的召回结果主要是保存用户或用户特征对应的movie\_id，这样在页面展示的时候直接查询取数就可以了。
 
 模型
 ----
 
-![模型训练过程](image/model.png){width="\linewidth"}
 
 页面
 ----
 
-![首页（热门电影）](image/index.png){width="\linewidth"}
 
-![推荐电影](image/movie.png){width="\linewidth"}
-
-![电影详情](image/movie_detail.png){width="\linewidth"}
-
-![用户登录](image/login.png){width="\linewidth"}
-
-![用户](image/html_user.png){width="\linewidth"}
-
-\newpage
 数据
 ====
 
@@ -105,7 +70,6 @@ title: 电影推荐系统说明文档
 
 首先将movielens的所有文件数据处理后保存到sqlite数据库中，然后训练的时候再从数据库中读取该数据，最后将模型训练后的结构保存至数据库中。这样处理的目的是将所有的数据包括基础数据、模型的训练数据、模型训练后的数据、召回结果、精排结果等数据都存储在数据库中，使用时也统一从数据库中查询调用，方便后端的调用和调优。
 
-\newpage
 模型
 ====
 
@@ -114,7 +78,7 @@ title: 电影推荐系统说明文档
 FM模型
 ------
 
-$$y = f(w_0 + \sum\nolimits_{n}w_i x_i +\sum\nolimits_{n}\sum\nolimits_{n}<u_i, u_j>x_i x_j)$$
+$y = f(w_0 + \sum\nolimits_{n}w_i x_i +\sum\nolimits_{n}\sum\nolimits_{n}<u_i, u_j>x_i x_j)$
 对用户id和电影id以及四个用户特征（性别、年龄、职业、区域）进行FM模型训练，使用梯度下降进行优化，得到隐特征矩阵。
 
 召回
@@ -132,7 +96,6 @@ $$y = f(w_0 + \sum\nolimits_{n}w_i x_i +\sum\nolimits_{n}\sum\nolimits_{n}<u_i, 
 
 对于电影的召回并没有使用算法，而是采用规则进行过滤和选取。规则就是找到看过该电影并且评分高的用户，然后查询该用户看过且评分高的其它电影，就得到了该电影的召回结果。
 
-\newpage
 网页
 ====
 
@@ -173,7 +136,6 @@ $$y = f(w_0 + \sum\nolimits_{n}w_i x_i +\sum\nolimits_{n}\sum\nolimits_{n}<u_i, 
 
 后端使用Python的Flask框架，一个页面对应一个视图函数，另外还有用户登录、用户注销、用户召回结果获取和电影召回结果获取函数，默认地址为127.0.0.1，端口号80。
 
-\newpage
 总结
 ====
 
